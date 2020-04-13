@@ -1,0 +1,25 @@
+{
+  "name": "docker-introduction-api",
+  "version": "1.0.0",
+  "description": "Docker introduction using nodeJS, Mysql and PHP.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "nodemon ./src/index"
+  },
+  "keywords": [
+    "Docker",
+    "NodeJS",
+    "PHP",
+    "SQL"
+  ],
+  "author": "Hery Santos",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}

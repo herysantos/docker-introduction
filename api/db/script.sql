@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS products(
 
 INSERT INTO products VALUE (0, 'Curso Front-End', 2500);
 INSERT INTO products VALUE (0, 'Curso Js FullStack', 900);
-INSERT INTO products VALUE (0, 'Curso de Introdução Docker', 1400);
+INSERT INTO products VALUE (0, 'Curso de Introducao Docker', 1400);
