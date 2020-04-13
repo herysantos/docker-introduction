@@ -1,0 +1,38 @@
+docker-introduction: Comandos utilizados
+
+Criando imagem e container Docker Mysql;
+
+[docker-introduction]: sudo snap install docker
+[docker-introduction]: sudo docker build -t mysql-image -f api/db/dockerfile .
+[docker-introduction]: sudo docker image ls
+[docker-introduction]: sudo docker run -d --rm --name mysql-container mysql-image
+[docker-introduction]: sudo docker ps
+[docker-introduction]: sudo docker exec -i mysql-container mysql -uroot -p'myrootpass' < api/db/script.sql
+[docker-introduction]: sudo docker exec -it mysql-container /bin/bash
+[root@mysql-container]: exit
+[docker-introduction]: sudo docker stop mysql-container
+[docker-introduction]: sudo docker run -d -v $(pwd)/tmp/db/data/lib/mysql --rm --name mysql-container mysql-image
+
+
+
+/****
+Docker Build Options
+
+-t or --tag = define a tag name for the image
+-f or --file = set a PATH to the dockfile
+-v or --volume = Bind mount a volume to keep data after stop container
+DOC: https://docs.docker.com/engine/reference/commandline/build/
+
+Docker Run Options
+
+-d or --detach = Run container in background
+--rm = remove a container if its already exists.
+--name = assign a name to the container 
+DOC: https://docs.docker.com/engine/reference/commandline/run/
+
+Docker Exec Options
+
+-i or --interactive = allow run a command in interactive mode // keep alive until commands done
+-t --tty =  open a pseudo terminal
+DOC: https://docs.docker.com/engine/reference/commandline/exec/
+****/
