@@ -35,10 +35,13 @@ docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container m
 OU
 sudo docker run -d -v $(pwd)/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
 
+
+## Criando imagem e container PHP7.2 e Apache
+[docker-introduction]: sudo docker build -t php-image -f website/dockerfile .
+[docker-introduction]: sudo docker run -d -v $(pwd)/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
+
 ## Debugando container node caso não abra
 [docker-introduction]: sudo docker logs -f node-container
-
-
 
 /****
 Docker Build Options
