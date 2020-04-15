@@ -26,19 +26,19 @@ Create a mysql image on docker
 > sudo docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
 
 Initiate the mysql-container
-> docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container mysql-image --default-authentication-plugin=mysql_native_password
+> sudo docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container mysql-image --default-authentication-plugin=mysql_native_password
 
 Create database using script.sql
-> docker exec -i mysql-container mysql -uroot -p'myrootpass' < api/db/script.sql
+> sudo docker exec -i mysql-container mysql -uroot -p'myrootpass' < api/db/script.sql
 
 Install NodeJS and Express
-> npm build api
+> cd api && npm install api
 
-Create a NodeJS image on docker
-> docker build -t node-image -f api/dockerfile .
+Create a NodeJS image on docker 
+> cd .. && sudo docker build -t node-image -f api/dockerfile .
 
 Initiate the node-container
-> docker run -d -v $(pwd)/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
+> sudo docker run -d -v $(pwd)/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
 
 Create a PHP7.2-apache image on docker
 > sudo docker build -t php-image -f website/dockerfile .
@@ -51,10 +51,10 @@ Alright! Your environment is Setup.
 ## Debugging
 
 If nodeJS API doesn't work properly
-> docker logs -f node-container
+> sudo docker logs -f node-container
 
 If web page doesn't work properly
-> docker logs -f php-container
+> sudo docker logs -f php-container
 
 ## References
 
