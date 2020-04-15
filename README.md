@@ -7,23 +7,23 @@ Each node is separeted in a container: mysql-container, node-container and php-c
 ## Preview
 
 Web Page (http://localhost:8888/)
-![tela1](https://i.imgur.com/r4P9kJS.png)
+![tela1](https://i.imgur.com/ioiIHmJ.png)
 
 API (http://localhost:9001/products)
-![tela2](https://i.imgur.com/yNtD5yr.png)
+![tela2](https://i.imgur.com/Rd4AAl9.png)
 
 ## To Clone and Setup the environment
 
 (Linux - Ubuntu)
 
 Clone the repository
-> git clone https://github.com/herysantos/docker-introduction.git
+> git clone https://github.com/herysantos/docker-introduction.git && cd docker-introduction
 
 If Docker isn't installed
 > sudo snap install docker
 
 Create a mysql image on docker
-> sudo docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container mysql-image
+> sudo docker build -t mysql-image -f api/db/dockerfile .
 
 Initiate the mysql-container
 > sudo docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container mysql-image --default-authentication-plugin=mysql_native_password
@@ -46,7 +46,7 @@ Create a PHP7.2-apache image on docker
 Initiate the php-container
 > sudo docker run -d -v $(pwd)/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
 
-Alright! Your environment is Setup.
+Alright! Your environment is set up.
 
 ## Debugging
 
