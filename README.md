@@ -22,29 +22,14 @@ Clone the repository
 If Docker isn't installed
 > sudo snap install docker
 
-Create a mysql image on docker
-> sudo docker build -t mysql-image -f api/db/dockerfile .
-
-Initiate the mysql-container
-> sudo docker run -d -v $(pwd)/tmp/db/data:/var/lib/mysql --rm --name mysql-container mysql-image --default-authentication-plugin=mysql_native_password
+Run docker-compose to deploy container
+> sudo docker-composer up -d
 
 Create database using script.sql
 > sudo docker exec -i mysql-container mysql -uroot -p'myrootpass' < api/db/script.sql
 
 Install NodeJS and Express
-> cd api && npm install api
-
-Create a NodeJS image on docker 
-> cd .. && sudo docker build -t node-image -f api/dockerfile .
-
-Initiate the node-container
-> sudo docker run -d -v $(pwd)/api:/home/node/app -p 9001:9001 --link mysql-container --rm --name node-container node-image
-
-Create a PHP7.2-apache image on docker
-> sudo docker build -t php-image -f website/dockerfile .
-
-Initiate the php-container
-> sudo docker run -d -v $(pwd)/website:/var/www/html -p 8888:80 --link node-container --rm --name php-container php-image
+> cd api && sudo npm install api
 
 Alright! Your environment is set up.
 
@@ -61,8 +46,8 @@ If web page doesn't work properly
 Docker Documentation:
 > https://docs.docker.com/engine/reference/commandline/docker/
 
-NPM Build: 
-> https://docs.npmjs.com/cli/build
+NPM install: 
+> https://docs.npmjs.com/cli/install
 
 Programador a Bordo:
 > https://www.youtube.com/watch?v=Kzcz-EVKBEQ
